@@ -1,0 +1,53 @@
+
+
+
+my_A_rows = int(input("введите число строк матрицы коэфициентов: "))
+
+print("введите матрицу коэфициентов (по строкам, пробелы между коэффициентами")
+myA = [list(map(int, (input(f"строка {i + 1}: ").split())))
+       for i in range(my_A_rows)]
+
+print(myA[0]*3)
+
+
+def kef_one(myA):
+    for i in range(len(myA)):
+        if (myA[i][0] == 1):
+            listDop = myA[0]
+            myA[0] = myA[i]
+            myA[i] = listDop
+    return myA
+
+
+def  Zero_add(myA):
+    i = 1;
+    for i in range(len(myA)):
+
+        for j in range(i+1,len(myA)):
+            kef = myA[j][i]/myA[i][i]
+            print(j)
+            print(myA[j])
+            print(myA[i])
+            print(kef)
+            result = list(map(lambda x, y: x - y*kef, myA[j], myA[i]))
+            myA[j]=result
+            print(result)
+    return myA
+
+
+def found_korn(myA):
+    ln = len(myA)
+    for i in range(ln,-1):
+        x = matric(myA)
+
+
+
+def matric(mas,num, my_A_rows):
+    for i in range(num+1,my_A_rows):
+        mas[len(mas)-1] = mas[len(mas)-1] + mas[i]
+    return mas[len(mas)-1]/mas[num]
+
+myA = kef_one(myA)
+print(myA)
+Zero_add(myA)
+print(myA)
