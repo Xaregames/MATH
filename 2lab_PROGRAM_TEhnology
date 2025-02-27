@@ -1,0 +1,34 @@
+
+
+
+class Spisok:
+
+    def __init__(self,value = None,next = None):
+        self.value = value
+        self.next = next
+
+
+    def add(self, value):
+        self.next = Spisok(self.value,self.next)
+        self.value = value
+
+
+    
+
+
+    def show_list(self):
+        print(self.value,self.next)
+        if(self.next != None):
+            self.next.show_list()
+
+
+
+
+
+head = Spisok(5)
+head.add(3)
+head.add(6)
+head.add(9)
+head.add("sdfsdfsdfsdf")
+
+head.show_list()
