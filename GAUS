@@ -55,6 +55,31 @@ def matric(mas,num, my_A_rows):
     return mas[len(mas)-1]/mas[num]
 
 
+
+def minor(mass):
+
+    lenghtMass =  len(mass)
+    
+    if (lenghtMass == 2):
+        print("Матрица тут ",mass)
+        return (mass[0][0]*mass[1][1] - mass[0][1]*mass[1][0])
+
+
+    opred = 0
+    
+    for i in range(lenghtMass):
+        mass_dop = mass[:]
+        num = mass[0][i]
+        mass_dop = mass_dop[1:]
+        for j in range(len(mass_dop)):
+            mass_dop[j] = mass_dop[j][:i] + mass_dop[j][i+1:]
+ 
+        opred += num*minor(mass_dop)*pow(-1,i)
+        
+    return opred
+
+
+
 korn = [my_A_rows]
 myA = kef_one(myA)
 print(myA)
