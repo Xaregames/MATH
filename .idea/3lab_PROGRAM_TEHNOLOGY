@@ -1,0 +1,89 @@
+
+import time
+
+
+
+
+class StekSpisok:
+
+    def __init__(self ,value = None ,next = None):
+        self.value = value
+        self.next = next
+
+
+    def add(self, value):
+        self.next = StekSpisok(self.value ,self.next)
+        self.value = value
+
+
+    def show_list(self):
+        print(self.value)
+        if(self.next != None):
+            self.next.show_list()
+
+    def pop(self):
+        self.value = self.next.value
+        self.next = self.next.next
+
+
+class StekMass:
+
+
+    def __init__(self ,value):
+        self.mass = []
+        self.next = 0
+        self.value = value
+
+    def add(self, value):
+        if self.next < self.value:
+            self.mass.append(value)
+            self.next += 1
+        else:
+            print("Стек переполнен!")
+
+    def show_list(self):
+        for i in range(self.next-1,-1,-1):
+            print(self.mass[i])
+
+    def pop(self):
+        self.next -= 1
+        return self.mass.pop()
+
+
+
+
+
+
+# На основе связаного списка
+start_time = time.time()
+head = StekMass(3)
+
+
+
+end_time = time.time()
+
+print(end_time-start_time)
+
+
+
+
+
+# На основе массива
+start_time = time.time()
+head = StekSpisok()
+
+head.add(2)
+head.add(3)
+head.add(6)
+head.add(8)
+
+head.show_list()
+head.pop()
+
+head.show_list()
+
+end_time = time.time()
+
+print(end_time-start_time)
+
+
